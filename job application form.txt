@@ -1,0 +1,103 @@
+<Html>  
+
+    <head>   
+
+    <title>  
+    Job Application Form 
+    </title> 
+    <style>
+    *{
+      max-width: 700px;
+      margin: auto;
+      background-color:bisque;
+    }  
+    body{
+    border-style: double;
+    border-radius: 20%;
+    padding-top: 100px;
+    padding-right: 50px;
+    padding-bottom: 50px;
+    padding-left: 50px;
+    background-color:skyblue;
+    border
+    } 
+    h1{
+        text-align: center;
+    }
+    form{
+      font-size: 20px;
+    }
+    </style>
+ <script type="text/javascript">
+ function display() {
+  DispWin = window.open('','NewWin', 'toolbar=no,status=no,width=1300,height=700')
+  message = "<b>FULLNAME: </b>" + document.displaydata.fullname.value+"<br>";
+  message += "<b>EMAIL: </b>" + document.displaydata.email.value+"<br>";  
+  message += "<b>ADDRESS: </b>" + document.displaydata.address.value+"<br>";
+  message += "<b>PHONE: </b>" + document.displaydata.phone.value+"<br>";
+    message += "<b>PINCODE: </b>" + document.displaydata.pincode.value+"<br>";
+    message += "<b>JOB ROLES: </b>" + document.displaydata.jobs.value+"<br>";
+    message += "<b>Interview Starting Date: </b>" + document.displaydata.starting_date.value+"<br>";
+    message +="<b>Your CV Submitted successfully</b>";
+  DispWin.document.write(message);
+}
+</script>
+
+    </head>  
+    <body>  
+    <h1>Job Application Form</h1>
+    <br>  
+    <br>
+    <form name="displaydata">  
+    <br>  
+    <label> Full name </label>         
+    <input type="text" name="fullname" size="15" required> <br> <br>  
+    
+    <label>Email address</label>
+        <input type="email" name="email"  aria-describedby="emailHelp" placeholder="Enter your email address" required>
+    <br>      
+    <br>
+    <label>   
+    Phone :  
+    </label>  
+    <input type="text" name="country code"  value="+91" size="2" required>   
+    <input type="text" name="phone" size="10"required> <br> <br>  
+    Address  
+    <br>  
+    <textarea cols="60" rows="5" name="address" value="address" placeholder="Door No, Street, City, State" required>  
+    </textarea>  
+    <br>
+    <br>
+    <label>Pin Code</label>
+    <input type="text" name="pincode" placeholder="pincode" required>
+    <br>
+    <br> 
+    <label>Job Roles</label>
+    <select name="jobs">
+      <option>--select--</option>
+     <option> Big Data Engineer</option>
+     <option>Machine Learning Engineer</option>
+     <option>Data Scientist</option>
+     <option>Data Analyst</option>
+     <option>Blockchain Developer</option>
+     <option>Software Developer</option>
+     <option>Computer Network Architect</option>
+     <option>Computer Systems Analyst</option>
+     <option>Database Administrator</option>
+     <option>Information Security Analyst</option>
+     <option>Full Stack Developer</option>
+    </select><br><Br>
+    <label>Interview Start Date</label>
+    <input name="starting_date" type="date" value="2020-02-01" required>
+     <br>
+    <br>
+    
+          <label>Upload your CV:</label>
+        <input type="file" name="file" required>
+        <br>
+    <br>
+    <input type="submit" value="Submit" onclick="display()"/>
+    <input type="reset" value="reset" />  
+    </form>  
+    </body>  
+    </html>  

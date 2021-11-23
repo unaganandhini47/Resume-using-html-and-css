@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+
+<html>
+
+  <head>
+    <title>Simple GPA Calculator</title>
+    <script>
+      // (A) SCORE SHEET & SUBJECTS
+      var scores = {
+        Distinction: 10,
+        A: 9, B: 8, C: 7, D: 6, F: 5, G: 4, H: 3, I: 2, J: 1, K: 0
+      };
+      var subjects = [
+        "DS", "MFC", "WT", "AOS" , "ADBMS"
+      ];
+
+      // (B) DRAW HTML
+      window.addEventListener("load", function(){
+        let wrapper = document.getElementById("gpa-wrap"),
+            table = document.createElement("table"),
+            row = table.insertRow(),
+            cell = null, selector = null, option = null;
+
+        for (let s of subjects) {
+          cell = row.insertCell();
+          cell.innerHTML = s;
+          cell = row.insertCell();
+          selector = document.createElement("select");
+          cell.appendChild(selector);
+          for (let grade in scores) {
+            option = document.createElement("option");
+            option.innerHTML = grade;
+            option.value = scores[grade];
+            selector.appendChild(option);
+            selector.onchange = gpacalc;
+          }
+          row = table.insertRow();
+        }
+        wrapper.appendChild(table);
+        gpacalc();
+      });
+      
+      // (C) CALCULATE FUNCTION
+      var gpacalc = function(){
+        let all = document.querySelectorAll("#gpa-wrap select"),
+            score = 0;
+        for (let i of all) {
+          // Use parseFloat if decimals are involved.
+          score += parseInt(i.value);
+        }
+        document.getElementById("gpa-total").innerHTML = score;
+        document.getElementById("gpa-average").innerHTML = score / all.length;
+        document.getElementById("percentage").innerHTML= (score / all.length)*9.5; 
+      };
+    </script>
+    <style>
+      #gpa-wrap table {
+        border-collapse: collapse;
+        margin-bottom: 10px;
+      }
+      #gpa-wrap table tr:nth-child(odd){
+        background: #f2f2f2;
+      }
+      #gpa-wrap table tr td {
+        padding: 10px;
+      }
+    </style>
+  </head>
+  <body>
+    <h1>Simple  CGPA Calculator</h1>
+    <!-- (B) HTML -->
+    <div id="gpa-wrap"></div>
+    <div>
+      Total Points: <span id="gpa-total">0</span>
+    </div>
+    <div>
+      GPA: <span id="gpa-average">0</span>
+    </div>
+    <div>
+      PERCENTAGE: <span id="percentage">0</span>
+    </div>
+  </body>
+</html>
